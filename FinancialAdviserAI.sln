@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinancialAdviserAI", "FinancialAdviserAI\FinancialAdviserAI.csproj", "{66CD66C7-A0CD-475B-8400-EC279F392EBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialAdviserAI.Core", "FinancialAdviserAI.Core\FinancialAdviserAI.Core.csproj", "{50FA1C3F-1BF4-44D2-9DE2-723987E52A3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialAdviserAI.Data", "FinancialAdviserAI.Data\FinancialAdviserAI.Data.csproj", "{EC26BC56-5F0C-4DE6-AEDD-24756B4EE4CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialAdviserAI.Services", "FinancialAdviserAI.Services\FinancialAdviserAI.Services.csproj", "{DA099ACA-66A6-457B-B879-5B2134F0CD9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YahooFinanceAPI", "YahooFinanceAPI\YahooFinanceAPI.csproj", "{30E025F0-102C-4353-AA05-91965F13E1A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialAdviserAI.Scheduler", "FinancialAdviserAI.Scheduler\FinancialAdviserAI.Scheduler.csproj", "{3C66CF14-4BEE-4EBA-8E42-B5A8932A0A99}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66CD66C7-A0CD-475B-8400-EC279F392EBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66CD66C7-A0CD-475B-8400-EC279F392EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66CD66C7-A0CD-475B-8400-EC279F392EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66CD66C7-A0CD-475B-8400-EC279F392EBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50FA1C3F-1BF4-44D2-9DE2-723987E52A3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50FA1C3F-1BF4-44D2-9DE2-723987E52A3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50FA1C3F-1BF4-44D2-9DE2-723987E52A3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50FA1C3F-1BF4-44D2-9DE2-723987E52A3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC26BC56-5F0C-4DE6-AEDD-24756B4EE4CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC26BC56-5F0C-4DE6-AEDD-24756B4EE4CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC26BC56-5F0C-4DE6-AEDD-24756B4EE4CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC26BC56-5F0C-4DE6-AEDD-24756B4EE4CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA099ACA-66A6-457B-B879-5B2134F0CD9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA099ACA-66A6-457B-B879-5B2134F0CD9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA099ACA-66A6-457B-B879-5B2134F0CD9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA099ACA-66A6-457B-B879-5B2134F0CD9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30E025F0-102C-4353-AA05-91965F13E1A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30E025F0-102C-4353-AA05-91965F13E1A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30E025F0-102C-4353-AA05-91965F13E1A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30E025F0-102C-4353-AA05-91965F13E1A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C66CF14-4BEE-4EBA-8E42-B5A8932A0A99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C66CF14-4BEE-4EBA-8E42-B5A8932A0A99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C66CF14-4BEE-4EBA-8E42-B5A8932A0A99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C66CF14-4BEE-4EBA-8E42-B5A8932A0A99}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C211A7BE-6815-43B9-86C5-504A1F41B33D}
+	EndGlobalSection
+EndGlobal

@@ -17,12 +17,22 @@ namespace FinancialAdviserAI.Controllers
             _financeService = financeService;
         }
 
-        [HttpGet]
+        [HttpGet("scrape-news")]
         public async Task<IActionResult> ScrapeFinancialNewsDataAsync()
         {
             var cancellationTokenSource = new CancellationTokenSource();
 
-            await _financeService.ScrapeFinancialDataAsync(cancellationTokenSource.Token);
+            await _financeService.ScrapeFinancialNewsAsync(cancellationTokenSource.Token);
+
+            return Ok();
+        }
+
+        [HttpGet("scrape-statements")]
+        public async Task<IActionResult> ScrapeFinancialStatementsDataAsync()
+        {
+            var cancellationTokenSource = new CancellationTokenSource();
+
+            await _financeService.ScrapeFinancialStatementsAsync(cancellationTokenSource.Token);
 
             return Ok();
         }

@@ -19,10 +19,21 @@ namespace FinancialAdviserAI.Data.Repositories
             return await _context.Stocks.SingleOrDefaultAsync(s => s.Ticker == ticker);
         }
 
-        public async Task AddStockAsync(Stock stock)
+        public async Task<Stock> TryAddStockAsync(Stock stock)
         {
-            await _context.Stocks.AddAsync(stock);
-            await _context.SaveChangesAsync();
+            var entity = await _context.Stocks.FirstOrDefaultAsync(s => s.Ticker == stock.Ticker);
+
+            if (entity == null)
+            {
+                await _context.Stocks.AddAsync(stock);
+                await _context.SaveChangesAsync();
+
+                return await _context.Stocks.FirstOrDefaultAsync(s => s.Ticker == stock.Ticker);
+            }
+            else
+            {
+                return entity;
+            }
         }
     }
 

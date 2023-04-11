@@ -13,7 +13,7 @@ namespace FinancialAdviserAI.Data.Repositories
             _context = context;
         }
 
-        public async Task AddNewsAsync(FinancialNews financialNews)
+        public async Task TryAddNewsAsync(FinancialNews financialNews)
         {
             if (!_context.FinancialNews.Any(n => n.Title == financialNews.Title && n.PublicationDate == financialNews.PublicationDate))
             {

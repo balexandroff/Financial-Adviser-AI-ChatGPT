@@ -13,7 +13,7 @@ namespace FinancialAdviserAI.Data.Repositories
             _context = context;
         }
 
-        public async Task AddFinancialRatioAsync(FinancialRatio financialRatio)
+        public async Task TryAddFinancialRatioAsync(FinancialRatio financialRatio)
         {
             await _context.FinancialRatios.AddAsync(financialRatio);
             await _context.SaveChangesAsync();

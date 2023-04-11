@@ -11,15 +11,23 @@ namespace FinancialAdviserAI.Extensions
         {
             ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
             IScheduler scheduler = await schedulerFactory.GetScheduler();
-            IJobDetail job = RSSNewsFeedJobFactory.BuildJob();
-            ITrigger trigger = RSSNewsFeedTriggerFactory.BuildTrigger();
 
-            await scheduler.ScheduleJob(job, trigger);
+            // RSS News
+            IJobDetail rssJob = RSSNewsFeedJobFactory.BuildJob();
+            ITrigger rssTrigger = RSSNewsFeedTriggerFactory.BuildTrigger();
+            await scheduler.ScheduleJob(rssJob, rssTrigger);
+
+            // Financial Statements
+            IJobDetail finStatejob = FinancialStatementsJobFactory.BuildJob();
+            ITrigger finStatetrigger = FinancialStatementsTriggerFactory.BuildTrigger();
+            await scheduler.ScheduleJob(finStatejob, finStatetrigger);
 
             await scheduler.Start();
 
             // Trigger the job to run immediately
-            await scheduler.TriggerJob(job.Key);
+            await scheduler.TriggerJob(rssJob.Key);
+            await Task.Delay(5000);
+            await scheduler.TriggerJob(finStatejob.Key);
 
             return app;
         }

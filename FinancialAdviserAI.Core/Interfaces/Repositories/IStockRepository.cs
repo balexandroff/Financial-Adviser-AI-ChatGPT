@@ -5,6 +5,6 @@ namespace FinancialAdviserAI.Core.Interfaces.Repositories
     public interface IStockRepository
     {
         Task<Stock> GetStockByTickerAsync(string ticker);
-        Task AddStockAsync(Stock stock);
+        Task<Stock> TryAddStockAsync(Stock stock);
     }
 }

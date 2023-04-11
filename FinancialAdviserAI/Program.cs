@@ -1,4 +1,5 @@
 using FinancialAdviserAI.Core;
+using FinancialAdviserAI.Core.Configuration;
 using FinancialAdviserAI.Core.Interfaces.Repositories;
 using FinancialAdviserAI.Core.Interfaces.Services;
 using FinancialAdviserAI.Data.Repositories;
@@ -11,6 +12,9 @@ using Quartz;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddOptions<DataSourceSettings>().Bind(builder.Configuration.GetSection("DataSources"));
+
 // Register your DbContext here
 builder.Services.AddDbContext<FinanceDataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("FinanceConnectionString")));
@@ -24,6 +28,7 @@ builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<IFinanceService, FinanceService>();
 
 builder.Services.AddScoped<IJob, RSSNewsFeedJob>();
+builder.Services.AddScoped<IJob, FinancialStatementsJob>();
 
 builder.Services.AddQuartz(q =>
 {

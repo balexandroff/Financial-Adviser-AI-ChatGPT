@@ -3,20 +3,20 @@ using Quartz;
 
 namespace FinancialAdviserAI.Scheduler.YahooFinance.Jobs
 {
-    public class RSSNewsFeedJobFactory
+    public class FinancialStatementsJobFactory
     {
         public static IJobDetail BuildJob()
         {
-            return JobBuilder.Create<RSSNewsFeedJob>()
-                .WithIdentity("YahooFinance-RSS-News-Feed-Job", "YahooFinanceGroup")
+            return JobBuilder.Create<FinancialStatementsJob>()
+                .WithIdentity("YahooFinance-Financial-Statements-Job", "YahooFinanceGroup")
                 .Build();
         }
     }
-    public class RSSNewsFeedJob : IJob
+    public class FinancialStatementsJob : IJob
     {
         private readonly IFinanceService _financeService;
 
-        public RSSNewsFeedJob(IFinanceService financeService)
+        public FinancialStatementsJob(IFinanceService financeService)
         {
             _financeService = financeService;
         }
@@ -25,7 +25,7 @@ namespace FinancialAdviserAI.Scheduler.YahooFinance.Jobs
         {
             var cancellationTokenSource = new CancellationTokenSource();
 
-            await _financeService.ScrapeFinancialNewsAsync(cancellationTokenSource.Token);
+            await _financeService.ScrapeFinancialStatementsAsync(cancellationTokenSource.Token);
         }
     }
 }

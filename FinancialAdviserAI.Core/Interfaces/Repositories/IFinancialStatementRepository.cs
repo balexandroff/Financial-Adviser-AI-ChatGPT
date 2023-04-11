@@ -4,6 +4,6 @@ namespace FinancialAdviserAI.Core.Interfaces.Repositories
 {
     public interface IFinancialStatementRepository
     {
-        Task AddFinancialStatementAsync(FinancialStatement financialStatement);
+        Task<FinancialStatement> TryAddFinancialStatementAsync(FinancialStatement financialStatement);
     }
 }

@@ -2,6 +2,8 @@
 {
     public interface IFinanceService
     {
-        Task ScrapeFinancialDataAsync(CancellationToken cancellationToken);
+        Task ScrapeFinancialNewsAsync(CancellationToken cancellationToken);
+
+        Task ScrapeFinancialStatementsAsync(CancellationToken cancellationToken);
     }
 }

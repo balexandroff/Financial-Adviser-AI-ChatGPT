@@ -36,5 +36,25 @@ namespace FinancialAdviserAI.Controllers
 
             return Ok();
         }
+
+        [HttpGet("scrape-stocks")]
+        public async Task<IActionResult> ScrapeStocksFromMarketAsync()
+        {
+            var cancellationTokenSource = new CancellationTokenSource();
+
+            await _financeService.ScrapeFullStocksDataAsync(cancellationTokenSource.Token);
+
+            return Ok();
+        }
+
+        [HttpGet("scrape-stocks/{ticker}")]
+        public async Task<IActionResult> ScrapeStocksFromMarketAsync(string ticker)
+        {
+            var cancellationTokenSource = new CancellationTokenSource();
+
+            await _financeService.ScrapeFullStocksDataAsync(cancellationTokenSource.Token, ticker);
+
+            return Ok();
+        }
     }
 }

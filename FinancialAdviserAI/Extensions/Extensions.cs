@@ -9,8 +9,13 @@ namespace FinancialAdviserAI.Extensions
     {
         public static async Task<WebApplication> AddBackgroudJobs(this WebApplication app)
         {
-            ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
+            var schedulerFactory = app.Services.GetRequiredService<ISchedulerFactory>();
             IScheduler scheduler = await schedulerFactory.GetScheduler();
+
+            // Full Stocks Data
+            IJobDetail fullStockDataJob = FinancialFullStocksDataJobFactory.BuildJob();
+            ITrigger fullStockDataTrigger = FinancialFullStocksDataTriggerFactory.BuildTrigger();
+            await scheduler.ScheduleJob(fullStockDataJob, fullStockDataTrigger);
 
             // RSS News
             IJobDetail rssJob = RSSNewsFeedJobFactory.BuildJob();
@@ -25,9 +30,11 @@ namespace FinancialAdviserAI.Extensions
             await scheduler.Start();
 
             // Trigger the job to run immediately
-            await scheduler.TriggerJob(rssJob.Key);
-            await Task.Delay(5000);
-            await scheduler.TriggerJob(finStatejob.Key);
+            await scheduler.TriggerJob(fullStockDataJob.Key);
+            //await Task.Delay(5000);
+            //await scheduler.TriggerJob(rssJob.Key);
+            //await Task.Delay(5000);
+            //await scheduler.TriggerJob(finStatejob.Key);
 
             return app;
         }

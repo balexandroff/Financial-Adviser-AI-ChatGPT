@@ -11,6 +11,13 @@ using Quartz;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddJsonFile("serilog.json", optional: false, reloadOnChange: true);
+// Add Serilog;
+
+builder.Logging.ClearProviders();
+
+builder.Services.AddSerilog(builder.Configuration);
+
 // Add services to the container.
 
 builder.Services.AddOptions<DataSourceSettings>().Bind(builder.Configuration.GetSection("DataSources"));

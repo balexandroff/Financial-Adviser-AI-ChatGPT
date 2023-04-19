@@ -2,6 +2,7 @@
 {
     public class DataSourceSettings
     {
+        public string StockMarketUrl { get; set; }
         public string Stocks { get; set; }
         public YahooFinanceSettings YahooFinance { get; set; }
 

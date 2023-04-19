@@ -33,6 +33,9 @@ builder.Services.AddScoped<IFinancialStatementRepository, FinancialStatementRepo
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 
 builder.Services.AddScoped<IFinanceService, FinanceService>();
+builder.Services.AddScoped<IFinanceNewsService, FinanceNewsService>();
+builder.Services.AddScoped<IFinanceStatementsService, FinanceStatementsService>();
+builder.Services.AddScoped<IFinanceRatiosService, FinanceRatioService>();
 
 builder.Services.AddScoped<IJob, RSSNewsFeedJob>();
 builder.Services.AddScoped<IJob, FinancialStatementsJob>();
@@ -54,7 +57,7 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+//if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();

@@ -14,18 +14,18 @@ namespace FinancialAdviserAI.Scheduler.YahooFinance.Jobs
     }
     public class FinancialStatementsJob : IJob
     {
-        private readonly IFinanceService _financeService;
+        private readonly IFinanceStatementsService _financeStatementsService;
 
-        public FinancialStatementsJob(IFinanceService financeService)
+        public FinancialStatementsJob(IFinanceStatementsService financeStatementsService)
         {
-            _financeService = financeService;
+            _financeStatementsService = financeStatementsService;
         }
 
         public async Task Execute(IJobExecutionContext context)
         {
             var cancellationTokenSource = new CancellationTokenSource();
 
-            await _financeService.ScrapeFinancialStatementsAsync(cancellationTokenSource.Token);
+            await _financeStatementsService.ScrapeFinancialStatementsAsync(cancellationTokenSource.Token);
         }
     }
 }

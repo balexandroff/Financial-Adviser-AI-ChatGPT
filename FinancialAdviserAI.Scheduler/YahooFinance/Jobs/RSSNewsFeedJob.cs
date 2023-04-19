@@ -14,18 +14,18 @@ namespace FinancialAdviserAI.Scheduler.YahooFinance.Jobs
     }
     public class RSSNewsFeedJob : IJob
     {
-        private readonly IFinanceService _financeService;
+        private readonly IFinanceNewsService _financeNewsService;
 
-        public RSSNewsFeedJob(IFinanceService financeService)
+        public RSSNewsFeedJob(IFinanceNewsService financeNewsService)
         {
-            _financeService = financeService;
+            _financeNewsService = financeNewsService;
         }
 
         public async Task Execute(IJobExecutionContext context)
         {
             var cancellationTokenSource = new CancellationTokenSource();
 
-            await _financeService.ScrapeFinancialNewsAsync(cancellationTokenSource.Token);
+            await _financeNewsService.ScrapeYahooFinancialNewsAsync(cancellationTokenSource.Token);
         }
     }
 }

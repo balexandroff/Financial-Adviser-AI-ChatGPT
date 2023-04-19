@@ -9,7 +9,7 @@ namespace FinancialAdviserAI.Scheduler.YahooFinance.Triggers
             return TriggerBuilder.Create()
                 .WithIdentity("YahooFinance-RSS-News-Feed-Trigger", "YahooFinanceGroup")
                 .StartNow()
-                .WithCronSchedule("0 0 * * * ?")
+                .WithCronSchedule("0 0 0/6 ? * * *")
                 .Build();
         }
     }

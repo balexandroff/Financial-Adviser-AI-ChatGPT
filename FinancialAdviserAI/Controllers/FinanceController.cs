@@ -1,6 +1,4 @@
 ﻿using FinancialAdviserAI.Core.Interfaces.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinancialAdviserAI.Controllers
@@ -11,33 +9,38 @@ namespace FinancialAdviserAI.Controllers
     public class FinanceController : ControllerBase
     {
         private readonly IFinanceService _financeService;
+        private readonly IFinanceNewsService _financeNewsService;
+        private readonly IFinanceStatementsService _financeStatementsService;
 
-        public FinanceController(IFinanceService financeService)
+        public FinanceController(IFinanceService financeService, IFinanceNewsService financeNewsService, 
+            IFinanceStatementsService financeStatementsService)
         {
             _financeService = financeService;
+            _financeNewsService = financeNewsService;
+            _financeStatementsService = financeStatementsService;
         }
 
-        [HttpGet("scrape-news")]
-        public async Task<IActionResult> ScrapeFinancialNewsDataAsync()
+        [HttpGet("scrape-news-yahoo")]
+        public async Task<IActionResult> ScrapeYahooFinancialNewsDataAsync()
         {
             var cancellationTokenSource = new CancellationTokenSource();
 
-            await _financeService.ScrapeFinancialNewsAsync(cancellationTokenSource.Token);
+            await _financeNewsService.ScrapeYahooFinancialNewsAsync(cancellationTokenSource.Token);
 
             return Ok();
         }
 
-        [HttpGet("scrape-statements")]
-        public async Task<IActionResult> ScrapeFinancialStatementsDataAsync()
+        [HttpGet("scrape-statements/{ticker}")]
+        public async Task<IActionResult> ScrapeFinancialStatementsDataAsync(string ticker)
         {
             var cancellationTokenSource = new CancellationTokenSource();
 
-            await _financeService.ScrapeFinancialStatementsAsync(cancellationTokenSource.Token);
+            await _financeStatementsService.ScrapeFinancialStatementsAsync(cancellationTokenSource.Token, new List<string> { ticker });
 
             return Ok();
         }
 
-        [HttpGet("scrape-stocks")]
+        [HttpGet("scrape-stocks-all")]
         public async Task<IActionResult> ScrapeStocksFromMarketAsync()
         {
             var cancellationTokenSource = new CancellationTokenSource();

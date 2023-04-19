@@ -31,10 +31,10 @@ namespace FinancialAdviserAI.Extensions
 
             // Trigger the job to run immediately
             await scheduler.TriggerJob(fullStockDataJob.Key);
-            //await Task.Delay(5000);
-            //await scheduler.TriggerJob(rssJob.Key);
-            //await Task.Delay(5000);
-            //await scheduler.TriggerJob(finStatejob.Key);
+            await Task.Delay(5000);
+            await scheduler.TriggerJob(rssJob.Key);
+            await Task.Delay(5000);
+            await scheduler.TriggerJob(finStatejob.Key);
 
             return app;
         }
